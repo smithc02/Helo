@@ -28,7 +28,8 @@ massive(process.env.CONNECTION_STRING)
 
 app.post('/api/register', controller.register); // register a new user in db
 app.post('/api/login', controller.login); //login existing user
-
+app.get('/api/getuser?', controller.get_user )
+// app.get('/')
 
 app.listen(process.env.EXPRESS_PORT, () => {
 	console.log(`Server - Listening on ${process.env.EXPRESS_PORT}`);

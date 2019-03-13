@@ -10,8 +10,10 @@ export class Auth extends Component {
 		};
 	}
 
-	componentDidUpdate(){
-		
+	componentDidUpdate() {
+		if (this.state.username) {
+			this.setState({ username: '' });
+		}
 	}
 
 	handleSubmit = (username, password) => {
@@ -19,6 +21,10 @@ export class Auth extends Component {
 	};
 	handleChange = e => {
 		this.setState({ [e.target.name]: e.target.value });
+	};
+
+	handlePull = () => {
+		axios.get('/api/getuser?username=Caleb');
 	};
 
 	render() {

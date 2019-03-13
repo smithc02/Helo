@@ -42,5 +42,21 @@ module.exports = {
 				}
 			})
 			.catch(err => console.log(err));
+	},
+
+	get_user: async (req, res) => {
+		console.log(res);
+		const { username } = req.query;
+		const db = req.app.get('db');
+
+		db.get_user([username]).then(async response => {
+			if (!response.length) {
+				console.log('log 1', response);
+				res.status(401).json({ error: 'No user found' });
+			} else {
+				console.log('log2', response);
+				res.status(401).json({ error: 'Good job!' });
+			}
+		});
 	}
 };
